@@ -1,10 +1,10 @@
-function addTask(){
+function addTask() {
 
   const input = document.getElementById("taskInput");
 
   const taskText = input.value.trim();
 
-  if(taskText === ""){
+  if (taskText === "") {
     alert("Please enter a task");
     return;
   }
@@ -12,32 +12,24 @@ function addTask(){
   const li = document.createElement("li");
 
   li.innerHTML = `
-  
-    <span 
-    class="task-text"
-    onclick="toggleTask(this)">
+    <span class="task-text" onclick="toggleTask(this)">
       ${taskText}
     </span>
 
-    <button 
-    class="delete-btn"
-    onclick="deleteTask(this)">
+    <button class="delete-btn" onclick="deleteTask(this)">
       Delete
     </button>
-
   `;
 
-  document
-  .getElementById("taskList")
-  .appendChild(li);
+  document.getElementById("taskList").appendChild(li);
 
   input.value = "";
 }
 
-function deleteTask(button){
+function deleteTask(button) {
   button.parentElement.remove();
 }
 
-function toggleTask(task){
+function toggleTask(task) {
   task.classList.toggle("completed");
 }
