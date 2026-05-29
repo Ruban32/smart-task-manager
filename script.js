@@ -1,12 +1,34 @@
 function addTask(){
 
-const input=document.getElementById("taskInput");
+  const input = document.getElementById("taskInput");
 
-const li=document.createElement("li");
+  const taskText = input.value.trim();
 
-li.innerText=input.value;
+  if(taskText === ""){
+    return;
+  }
 
-document.getElementById("taskList").appendChild(li);
+  const li = document.createElement("li");
 
-input.value="";
+  li.innerHTML = `
+    <span onclick="toggleTask(this)">
+      ${taskText}
+    </span>
+
+    <button onclick="deleteTask(this)">
+      Delete
+    </button>
+  `;
+
+  document.getElementById("taskList").appendChild(li);
+
+  input.value = "";
+}
+
+function deleteTask(button){
+  button.parentElement.remove();
+}
+
+function toggleTask(task){
+  task.classList.toggle("completed");
 }
